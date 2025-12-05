@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Cód. Barras</th>
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{ p.name }}</td>
+      <td>{{ p.price | currency:'BRL' }}</td>
+      <td>{{ p.barcode }}</td>
+      <td>{{ p.category?.name || '—' }}</td>
+      <td>
+        <button class="btn btn-primary me-2" (click)="edit.emit(p)">Editar</button>
+        <button class="btn btn-danger me-2" (click)="delete.emit(p)">Excluir</button>
+        <button class="btn btn-success" (click)="addToCart.emit(p)">Comprar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
