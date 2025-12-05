@@ -1,0 +1,12 @@
+<h2>Produtos</h2>
+
+<button routerLink="/products/new" class="btn btn-primary mb-3">
+  Novo Produto
+</button>
+
+<app-product-table
+  [products]="products"
+  (edit)="onEdit($event)"
+  (delete)="onDelete($event)"
+  (addToCart)="onAddToCart($event)"
+></app-product-table>
