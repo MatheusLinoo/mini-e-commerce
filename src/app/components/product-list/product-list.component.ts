@@ -48,6 +48,7 @@ export class ProductListComponent {
 
   onAddToCart(p: Product) {
     this.cart.add(p);
+    alert('Produto adicionado ao carrinho!');
   }
 
 
