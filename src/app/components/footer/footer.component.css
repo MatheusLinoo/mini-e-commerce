@@ -1,0 +1,29 @@
+.footer {
+  background-color: #202529;
+  border-top: 1px solid #3e4042;
+  padding: 2rem 0;
+  margin-top: 40px; /* Espaço para não colar no conteúdo */
+  color: #b0b3b8;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Para telas pequenas */
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: #b0b3b8;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ffffff;
+}
