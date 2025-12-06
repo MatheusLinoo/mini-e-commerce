@@ -38,7 +38,7 @@ export class ProductFormComponent implements OnInit {
         
         this.form.patchValue({
           ...product,
-          categoriaId: product.categoria?.id 
+          categoriaId: product.categoriaId 
         });
       });
     }

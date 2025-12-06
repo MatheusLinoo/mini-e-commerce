@@ -10,7 +10,7 @@
 
   <tbody>
     <tr *ngFor="let p of products">
-      <td>{{ p.nome }}</td> <td>{{ p.preco | currency:'BRL' }}</td> <td>{{ p.sku }}</td> <td>{{ p.categoria?.nome || '—' }}</td> 
+      <td>{{ p.nome }}</td> <td>{{ p.preco | currency:'BRL' }}</td> <td>{{ p.sku }}</td> <td>{{ p.categoriaNome || '—' }}</td> 
       <td>
         <button class="btn btn-sm btn-primary me-2" (click)="edit.emit(p)">Editar</button>
         <button class="btn btn-sm btn-danger me-2" (click)="delete.emit(p)">Excluir</button>

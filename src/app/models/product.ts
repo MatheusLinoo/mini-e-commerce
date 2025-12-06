@@ -12,6 +12,6 @@ export interface Product {
   sku: string;         
   descricao?: string;
   ativo?: boolean;
-  categoria?: Category; 
+  categoriaNome?: string;
   categoriaId?: number; 
 }
