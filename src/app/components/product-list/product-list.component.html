@@ -1,12 +1,59 @@
-<h2>Produtos</h2>
+<div class="container">
+  
+  <section class="hero">
+    <h1>Loja Virtual Minsait</h1>
+    <p>Explore nossa variedade de produtos via API Java Spring Boot.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary" routerLink="/products/new">
+        <i class="fa-solid fa-circle-plus"></i> Novo Produto
+      </button>
+    </div>
+  </section>
 
-<button routerLink="/products/new" class="btn btn-primary mb-3">
-  Novo Produto
-</button>
+  <div *ngIf="loading" class="text-center" style="color: white; padding: 20px;">
+    <i class="fas fa-spinner fa-spin fa-2x"></i> Carregando produtos...
+  </div>
 
-<app-product-table
-  [products]="products"
-  (edit)="onEdit($event)"
-  (delete)="onDelete($event)"
-  (addToCart)="onAddToCart($event)"
-></app-product-table>
+  <div class="product-grid" *ngIf="!loading">
+    
+    <div class="card" *ngFor="let p of products" [class.disabled]="p.ativo === false">
+      
+      <div class="card-image">
+        <i class="fas fa-box-open fa-5x" style="color: #ccc;"></i>
+      </div>
+
+      <div class="card-body">
+        <span class="card-title">{{ p.nome }}</span>
+        <p class="card-desc">{{ p.descricao || 'Sem descrição definida.' }}</p>
+
+        <button class="btn btn-cart" [disabled]="p.ativo === false" (click)="onAddToCart(p)">
+          <i class="fas fa-shopping-cart"></i> Comprar
+        </button>
+
+        <hr class="divider">
+
+        <ul class="details-list">
+          <li>
+            <i class="fas fa-tag text-gold"></i> 
+            <span>{{ p.preco | currency:'BRL' }}</span>
+          </li>
+          <li>
+            <i class="fas fa-barcode text-gold"></i> 
+            <span>SKU: {{ p.sku }}</span>
+          </li>
+          <li>
+            <i class="fas fa-check-circle text-gold"></i> 
+            <span>{{ p.categoriaNome || 'Geral' }}</span>
+          </li>
+        </ul>
+
+        <div class="mt-3 d-flex gap-2 justify-content-center">
+            <button class="btn btn-sm btn-outline" (click)="onEdit(p)">Editar</button>
+            <button class="btn btn-sm btn-outline" style="color: #dc3545; border-color: #dc3545;" (click)="onDelete(p)">Excluir</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
