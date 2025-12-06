@@ -7,9 +7,8 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-
   private readonly http = inject(HttpClient);
-  private readonly BASE_URL = 'http://localhost:8080/products';
+  private readonly BASE_URL = 'http://localhost:8080/v1/produtos';
 
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.BASE_URL);
@@ -19,16 +18,36 @@ export class ProductService {
     return this.http.get<Product>(`${this.BASE_URL}/${id}`);
   }
 
-  create(p: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.BASE_URL}/product`, p);
+  create(product: Product): Observable<Product> {
+    
+    const payload = {
+      produto: {
+        nome: product.nome,
+        descricao: product.descricao || '',
+        preco: product.preco,
+        sku: product.sku,
+        categoriaId: product.categoriaId,
+        ativo: true
+      },
+      quantidade: 10 
+    };
+    return this.http.post<Product>(this.BASE_URL, payload);
   }
 
-  update(p: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.BASE_URL}/update`, p);
+  update(product: Product): Observable<Product> {
+   
+    const payload = {
+      nome: product.nome,
+      descricao: product.descricao || '',
+      preco: product.preco,
+      sku: product.sku,
+      categoriaId: product.categoriaId,
+      ativo: true
+    };
+    return this.http.put<Product>(`${this.BASE_URL}/${product.id}`, payload);
   }
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.BASE_URL}/${id}`);
   }
-
 }

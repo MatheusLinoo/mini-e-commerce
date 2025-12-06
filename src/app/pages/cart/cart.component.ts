@@ -7,22 +7,23 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  private readonly cart = inject(CartService);
+ 
+  cartService = inject(CartService);
 
-  get items() {
-    return this.cart.items();
+  items = this.cartService.items; 
+  total = this.cartService.total; 
+
+  remove(id: number | undefined): void {
+    if (id !== undefined) {
+      this.cartService.remove(id);
+    }
   }
 
-  get total() {
-    return this.cart.total();
+  clear(): void {
+    this.cartService.clear();
   }
-
-  remove(id: number) {
-    this.cart.remove(id);
+  
+  getTotal(): number {
+    return this.cartService.total();
   }
-
-  clear() {
-    this.cart.clear();
-  }
-
 }

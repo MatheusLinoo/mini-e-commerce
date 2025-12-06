@@ -9,14 +9,14 @@ import { Category } from '../models/category';
 export class CategoryService {
 
   private readonly http = inject(HttpClient);
-  private readonly BASE_URL = 'http://localhost:8080/categories';
+  private readonly BASE_URL = 'http://localhost:8080/v1/categorias';
 
   getAll(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.BASE_URL}`);
   }
 
-  create(dto: { name: string; parentId?: number | null }): Observable<Category> {
-    return this.http.post<Category>(this.BASE_URL, dto);
+  create(category: { nome: string; idCategoriaPai?: number | null }): Observable<Category> {
+    return this.http.post<Category>(this.BASE_URL, category);
   }
 
   update(id: number, dto: { name: string; parentId?: number | null }): Observable<Category> {

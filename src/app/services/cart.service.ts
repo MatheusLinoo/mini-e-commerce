@@ -47,7 +47,7 @@ export class CartService {
 
   total(): number {
     return this.items().reduce(
-      (acc, i) => acc + Math.max(0, i.product.price) * i.quantity,
+      (acc, i) => acc + Math.max(0, i.product.preco) * i.quantity,
       0
     );
   }

@@ -39,7 +39,7 @@ export class ProductListComponent {
 
   onDelete(p: Product) {
     if (!p.id) return;
-    if (!confirm(`Excluir "${p.name}"?`)) return;
+    if (!confirm(`Excluir "${p.nome}"?`)) return;
 
     this.service.delete(p.id).subscribe(() => {
       this.products = this.products.filter(x => x.id !== p.id);
