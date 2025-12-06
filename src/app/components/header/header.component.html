@@ -1,9 +1,17 @@
-<nav class="navbar navbar-expand bg-light mb-3 p-2 rounded">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/products">Mini E-Commerce</a>
-    <div class="d-flex">
-      <a class="btn btn-outline-primary me-2" routerLink="/products">Produtos</a>
-      <a class="btn btn-outline-success" routerLink="/cart">Carrinho ({{ total }})</a>
+<nav class="navbar">
+  <div class="container navbar-content">
+    
+    <div class="logo">
+      <a class="brand-minsait" routerLink="/products">Minsait</a> 
     </div>
+
+    <ul class="nav-links">
+      <li><a routerLink="/products" routerLinkActive="active">Produtos</a></li>
+      <li>
+        <a routerLink="/cart" routerLinkActive="active">
+          Carrinho ({{ total }})
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
