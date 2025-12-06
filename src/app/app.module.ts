@@ -8,8 +8,11 @@ import { ProductTableComponent } from './components/product-table/product-table.
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductListComponent,
     CartComponent,
     ProductFormComponent,
+    LoginComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
