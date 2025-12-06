@@ -1,14 +1,17 @@
-import { Category } from './category';
 import { User } from './user';
+
+export interface Category {
+  id: number;
+  nome: string;
+}
 
 export interface Product {
   id?: number;
-  name: string;
-  price: number;
-  barcode?: string;
-  description?: string;
-  sku?: string;
-
-  category?: Category;
-  seller?: User;
+  nome: string;        
+  preco: number;       
+  sku: string;         
+  descricao?: string;
+  ativo?: boolean;
+  categoria?: Category; 
+  categoriaId?: number; 
 }
